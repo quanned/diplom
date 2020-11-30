@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: https://ondras.zarovi.cz/sql/demo/?keyword=default -->
+<sql>
+<datatypes db="mysql">
+		<group label="Numeric" color="rgb(238,238,170)">
+			<type label="Integer" length="0" sql="INTEGER" quote=""/>
+			<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
+			<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
+			<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
+			<type label="INT" length="0" sql="INT" quote=""/>
+			<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
+			<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+			<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+			<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+		</group>
+
+		<group label="Character" color="rgb(255,200,200)">
+			<type label="Char" length="1" sql="CHAR" quote="'"/>
+			<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+			<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+			<type label="Binary" length="1" sql="BINARY" quote="'"/>
+			<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+			<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+		</group>
+
+		<group label="Date &amp; Time" color="rgb(200,255,200)">
+			<type label="Date" length="0" sql="DATE" quote="'"/>
+			<type label="Time" length="0" sql="TIME" quote="'"/>
+			<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+			<type label="Year" length="0" sql="YEAR" quote=""/>
+			<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+		</group>
+
+		<group label="Miscellaneous" color="rgb(200,200,255)">
+			<type label="ENUM" length="1" sql="ENUM" quote=""/>
+			<type label="SET" length="1" sql="SET" quote=""/>
+			<type label="Bit" length="0" sql="bit" quote=""/>
+		</group>
+	</datatypes><table x="623" y="147" name="colors">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="color_name" null="0" autoincrement="0">
+<datatype>CHAR(25)</datatype>
+<default>'NULL'</default></row>
+<row name="hex" null="0" autoincrement="0">
+<datatype>CHAR(6)</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>color list</comment>
+</table>
+<table x="622" y="266" name="size">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="size1" null="1" autoincrement="0">
+<datatype>INTEGER(3)</datatype>
+<default>NULL</default></row>
+<row name="size2" null="1" autoincrement="0">
+<datatype>INTEGER(3)</datatype>
+<default>NULL</default></row>
+<row name="height1" null="1" autoincrement="0">
+<datatype>INTEGER(3)</datatype>
+<default>NULL</default></row>
+<row name="height2" null="1" autoincrement="0">
+<datatype>INTEGER(3)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>size list</comment>
+</table>
+<table x="923" y="146" name="items">
+<row name="id_item" null="1" autoincrement="1">
+<datatype>INTEGER(8)</datatype>
+<default>NULL</default></row>
+<row name="item_name" null="1" autoincrement="0">
+<datatype>CHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="ean13" null="1" autoincrement="0">
+<datatype>INTEGER(13)</datatype>
+<default>NULL</default></row>
+<row name="color_code" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default><relation table="colors" row="id" />
+</row>
+<row name="size_code" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default><relation table="size" row="id" />
+</row>
+<row name="sort_name" null="1" autoincrement="0">
+<datatype>INTEGER(1)</datatype>
+<default>NULL</default><relation table="sorts" row="id" />
+</row>
+<row name="brand_code" null="1" autoincrement="0">
+<datatype>INTEGER(2)</datatype>
+<default>NULL</default><relation table="brands" row="id" />
+</row>
+<row name="composition_code" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default><relation table="composition" row="id" />
+</row>
+<row name="caption" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default><relation table="item_caption" row="id" />
+</row>
+<row name="model_code" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default><relation table="models" row="id" />
+</row>
+<row name="price" null="1" autoincrement="0">
+<datatype>DOUBLE</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id_item</part>
+</key>
+<comment>product list</comment>
+</table>
+<table x="1210" y="467" name="categories">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER(2)</datatype>
+<default>NULL</default></row>
+<row name="category_name" null="1" autoincrement="0">
+<datatype>CHAR(40)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1210" y="345" name="item_caption">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="caption_name" null="1" autoincrement="0">
+<datatype>CHAR(50)</datatype>
+<default>NULL</default></row>
+<row name="category_code" null="1" autoincrement="0">
+<datatype>INTEGER(2)</datatype>
+<default>NULL</default><relation table="categories" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>item_caption</comment>
+</table>
+<table x="623" y="432" name="brands">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="brand_name" null="1" autoincrement="0">
+<datatype>CHAR(30)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>brand list</comment>
+</table>
+<table x="1209" y="247" name="composition">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="composition_name" null="1" autoincrement="0">
+<datatype>CHAR(20)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>composition list</comment>
+</table>
+<table x="1208" y="149" name="sorts">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER(1)</datatype>
+<default>NULL</default></row>
+<row name="sort_name" null="1" autoincrement="0">
+<datatype>CHAR(6)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>sort list</comment>
+</table>
+<table x="623" y="532" name="models">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="model_name" null="1" autoincrement="0">
+<datatype>CHAR(9)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>models_list</comment>
+</table>
+<table x="925" y="483" name="users">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>CHAR(40)</datatype>
+<default>'NULL'</default></row>
+<row name="email" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(40)</datatype>
+<default>'NULL'</default></row>
+<row name="password" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(50)</datatype>
+<default>'NULL'</default></row>
+<row name="role" null="0" autoincrement="0">
+<datatype>INTEGER(1)</datatype>
+<default>NULL</default><relation table="roles" row="id" />
+</row>
+<row name="city" null="0" autoincrement="0">
+<datatype>INTEGER(3)</datatype>
+<default>NULL</default><relation table="cities" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="623" y="662" name="roles">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(40)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="isAdmin" null="1" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="859" y="698" name="cities">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT(30)</datatype>
+<default>'NULL'</default></row>
+<row name="country" null="1" autoincrement="0">
+<datatype>INTEGER(2)</datatype>
+<default>NULL</default><relation table="countries" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="622" y="818" name="countries">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>'NULL'</default></row>
+<row name="isThereAStore" null="1" autoincrement="0">
+<datatype>BINARY</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1208" y="585" name="orders">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="orderNumber" null="1" autoincrement="0">
+<datatype>INTEGER(9)</datatype>
+<default>NULL</default></row>
+<row name="user" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="items" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT(300)</datatype>
+<default>NULL</default></row>
+<row name="isPaid" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="isDelivered" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="shop" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="shopList" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1047" y="701" name="shopList">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="city" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="cities" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+</sql>
