@@ -1,0 +1,9 @@
+backend/env
+backend/static
+backend/media
+backend/staticfiles
+backend/mediafiles
+front/node_modules
+*.py[cod]
+frontend/
+backend/db.sqlite3
